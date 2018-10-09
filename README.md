@@ -11,4 +11,4 @@ Karol Tomczyk (inżynieria oprogramowania i pomoc w backendzie)<br>
 Frontend: Vue.js 2.5 + Bootstrap 4.1<br>
 4. Diagram  przypadków<br>
 5. Diagram ERD<br>
-6. Spis funkcjonalności <br>
+6. <a href="https://docs.google.com/document/d/13FzYl5Oe2Qow_Dll7bDuIqZ2xxcq2z3q0Tbg7srS_XQ/edit?usp=sharing">Spis funkcjonalności</a> <br>
