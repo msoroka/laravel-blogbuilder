@@ -37,5 +37,12 @@ services:
     ports:
         - "33061:3306"
 
+  composer:
+    restart: 'no'
+    image: "composer"
+    command: install
+    volumes:
+      - .:/app
+
 volumes:
   dbdata:
