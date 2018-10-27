@@ -1,4 +1,4 @@
-<h1>BlogBuilder</h1><br>
+<h2>BlogBuilder</h2><br>
 
 Mateusz Soroka (lider, backend i pomoc we frontendzie)<br>
 Bartłomiej Skopiński (frontend)<br>
