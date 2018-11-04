@@ -7,9 +7,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Permissions\HasPermissionsTrait;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use HasPermissionsTrait;
 
     protected $fillable = [
         'first_name',
@@ -23,9 +26,4 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
-
-    public function blogs()
-    {
-        return $this->belongsToMany(Blog::class)->withPivot('role_id');
-    }
 }
