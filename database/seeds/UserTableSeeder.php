@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
         $user->last_name = 'Testowy';
         $user->nickname = 'admin';
         $user->email = 'admin@blog.com';
-        $user->password = bcrypt('test123');
+        $user->password = 'test123';
         $user->save();
         $user->roles()->attach($adminRole);
     }
