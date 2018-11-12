@@ -10,21 +10,12 @@ class UserHandler
 {
     public function getAllUsers()
     {
-        return view('admin.user.index', [
-            'users' => User::all(),
-        ]);
+        return User::all();
     }
 
     public function editUser($id)
     {
-        return view('admin.user.edit', [
-            'user' => User::find($id),
-        ]);
-    }
-
-    public function createUser()
-    {
-        return view('admin.user.create');
+        return User::find($id);
     }
 
     public function storeUser(Request $request)

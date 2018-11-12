@@ -16,12 +16,14 @@ class UserController extends Controller
 
     public function getAllUsers()
     {
-        return $this->handler->getAllUsers();
+        return view('admin.user.index', [
+            'users' => $this->handler->getAllUsers(),
+        ]);
     }
 
     public function getCreateUser()
     {
-        return $this->handler->createUser();
+        return view('admin.user.create');
     }
 
     public function storeUser(Request $request)
@@ -31,7 +33,9 @@ class UserController extends Controller
 
     public function getEditUser($id)
     {
-        return $this->handler->editUser($id);
+        return view('admin.user.edit', [
+            'user' => $this->handler->editUser($id),
+        ]);
     }
 
     public function updateUser(Request $request, $id)
