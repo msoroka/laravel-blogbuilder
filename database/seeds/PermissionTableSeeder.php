@@ -36,5 +36,40 @@ class PermissionTableSeeder extends Seeder
         $permission->slug = 'remove-users';
         $permission->name = 'Remove users';
         $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'list-posts';
+        $permission->name = 'List posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'create-posts';
+        $permission->name = 'Create posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'edit-posts';
+        $permission->name = 'Edit posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'remove-posts';
+        $permission->name = 'Remove posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'status-posts';
+        $permission->name = 'Status posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'assign-posts';
+        $permission->name = 'Assign posts';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'upload-files';
+        $permission->name = 'Upload files';
+        $permission->save();
     }
 }
