@@ -32,6 +32,15 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
         Route::name('remove-category')->delete('{id}/remove', 'CategoryController@removeCategory')->middleware('can:remove-categories');
     });
 
+    Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
+        Route::name('list-tags')->get('/', 'TagController@getAllTags')->middleware('can:list-tags');
+        Route::name('create-tag')->get('create', 'TagController@getCreateTag')->middleware('can:create-tags');
+        Route::name('store-tag')->post('store', 'TagController@storeTag')->middleware('can:create-tags');
+        Route::name('edit-tag')->get('{id}/edit', 'TagController@getEditTag')->middleware('can:edit-tags');
+        Route::name('update-tag')->put('{id}/update', 'TagController@updateTag')->middleware('can:edit-tags');
+        Route::name('remove-tag')->delete('{id}/remove', 'TagController@removeTag')->middleware('can:remove-tags');
+    });
+
     Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
         Route::name('upload')->get('/', function () {
             return view('admin.upload.index');
