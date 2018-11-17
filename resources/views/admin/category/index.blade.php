@@ -5,38 +5,42 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                <div class="card-header">Posts list</div>
+                <div class="card-header">Categories list</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            @if($posts->isNotEmpty())
-                                <table class="table table-striped table-vertical">
+                            @if($categories->isNotEmpty())
+                                <table class="table table-bordered table-vertical">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Status</th>
-                                            <th>Created at</th>
-                                            <th>Author</th>
-                                            @if(Auth::user()->can('edit-posts') || Auth::user()->can('remove-posts'))
+                                            <th>Parent</th>
+                                            @if(Auth::user()->can('edit-categories') || Auth::user()->can('remove-categories'))
                                                 <th>Actions</th>
                                             @endif
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $post)
-                                            <tr>
-                                                <td>{{ $post->name }}</td>
-                                                <td>{{ $post->status_name }}</td>
-                                                <td>{{ $post->created_at }}</td>
-                                                <td>{{ $post->author->full_name }}</td>
+                                        @foreach ($categories as $category)
+                                            <tr style="background: {{ $category->parent ?:"#eee" }}">
+                                                <td>
+                                                    {{ $category->name}}
+                                                </td>
+                                                <td>
+                                                    @if($category->parent)
+                                                        <strong>(parent: {{ $category->parent->name }})</strong>
+                                                    @else
+                                                        <strong>(root element)</strong>
+                                                    @endif
+                                                </td>
                                                 <td class="min-width text-right">
-                                                    @can('edit-posts')
-                                                        <a href="{{ route('admin.post.edit-post', $post) }}" class="btn btn-primary" title="Edit">
+                                                    @can('edit-categories')
+                                                        <a href="{{ route('admin.category.edit-category', $category) }}" class="btn btn-primary" title="Edit">
                                                             Edit
                                                         </a>
                                                     @endcan
-                                                    @can('remove-posts')
-                                                        {{ Form::open(['route' => ['admin.post.remove-post', $post], 'method' => 'DELETE', 'class' => 'confirm d-inline']) }}
+                                                    @can('remove-categories')
+                                                        {{ Form::open(['route' => ['admin.category.remove-category', $category], 'method' => 'DELETE', 'class' => 'confirm d-inline']) }}
                                                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger" title="Delete">
                                                                 Delete
                                                             </button>

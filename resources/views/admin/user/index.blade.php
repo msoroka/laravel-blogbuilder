@@ -15,7 +15,9 @@
                                         <th>Name</th>
                                         <th>Nickname</th>
                                         <th>E-mail</th>
-                                        <th>Actions</th>
+                                        @if(Auth::user()->can('edit-users') || Auth::user()->can('remove-users'))
+                                            <th>Actions</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>

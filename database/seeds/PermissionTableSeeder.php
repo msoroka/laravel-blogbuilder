@@ -12,11 +12,27 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->globalPermissions();
+        $this->userPermissions();
+        $this->postPermissions();
+        $this->categoryPermissions();
+    }
+
+    protected function globalPermissions()
+    {
         $permission = new Permission();
         $permission->slug = 'dashboard';
         $permission->name = 'Dashboard';
         $permission->save();
 
+        $permission = new Permission();
+        $permission->slug = 'upload-files';
+        $permission->name = 'Upload files';
+        $permission->save();
+    }
+
+    protected function userPermissions()
+    {
         $permission = new Permission();
         $permission->slug = 'list-users';
         $permission->name = 'List users';
@@ -36,7 +52,10 @@ class PermissionTableSeeder extends Seeder
         $permission->slug = 'remove-users';
         $permission->name = 'Remove users';
         $permission->save();
+    }
 
+    protected function postPermissions()
+    {
         $permission = new Permission();
         $permission->slug = 'list-posts';
         $permission->name = 'List posts';
@@ -66,10 +85,28 @@ class PermissionTableSeeder extends Seeder
         $permission->slug = 'assign-posts';
         $permission->name = 'Assign posts';
         $permission->save();
+    }
+
+    protected function categoryPermissions()
+    {
+        $permission = new Permission();
+        $permission->slug = 'list-categories';
+        $permission->name = 'List categories';
+        $permission->save();
 
         $permission = new Permission();
-        $permission->slug = 'upload-files';
-        $permission->name = 'Upload files';
+        $permission->slug = 'create-categories';
+        $permission->name = 'Create categories';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'edit-categories';
+        $permission->name = 'Edit categories';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'remove-categories';
+        $permission->name = 'Remove categories';
         $permission->save();
     }
 }
