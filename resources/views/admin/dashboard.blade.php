@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col text-center">
-            <h1>Panel administracyjny</h1>
+            <h1>Admin dashboard</h1>
             <div class="row">
                 <div class="col-12">
                     <a href="{{ route('admin.post.list-posts') }}">
@@ -17,6 +17,13 @@
                     <a href="{{ route('admin.user.list-users') }}">
                         <button class="btn btn-primary btn-lg">
                             Users
+                        </button>
+                    </a>
+                </div>
+                <div class="col-12" style="margin-top: 10px;">
+                    <a href="{{ route('admin.role.list-roles') }}">
+                        <button class="btn btn-primary btn-lg">
+                            Roles
                         </button>
                     </a>
                 </div>

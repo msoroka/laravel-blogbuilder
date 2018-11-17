@@ -50,6 +50,60 @@
                                 </div>
                             </div>
                         </div>
+                        @can('assign-roles')
+                            <h4 class="text-center">Roles</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-vertical">
+                                        <thead>
+                                            <tr>
+                                                <th>Role</th>
+                                                <th>Assign</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($roles as $role)
+                                                <tr>
+                                                    <td>{{ $role->name }}</td>
+                                                    <td><input type="checkbox" name="roles[]" value="{{ $role->id }}" 
+                                                    {{ $user->roles->contains($role) == 0 ?: 'checked' }}></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endcan
+                        @can('assign-permissions')
+                            <h4 class="text-center">Permissions</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-vertical">
+                                        <thead>
+                                            <tr>
+                                                <th>Permission</th>
+                                                <th>Assign</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($permissions as $permission)
+                                                <tr>
+                                                    <td>{{ $permission->name }}</td>
+                                                    <td>
+                                                        <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" 
+                                                        {{ $user->permissions->contains($permission) == 0 ?: 'checked' }}
+                                                        @foreach($user->roles as $role)
+                                                            {{ $role->permissions->contains($permission) == 0 ?: 'checked ' . 'disabled'  }}
+                                                        @endforeach
+                                                        >
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endcan
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 {{ Form::submit('Edit', ['class' => 'btn btn-primary btn-block']) }}

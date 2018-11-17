@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
-    Route::get('/', function () {
+    Route::name('dashboard')->get('/', function () {
         return view('admin.dashboard');
     });
 
@@ -39,6 +39,15 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
         Route::name('edit-tag')->get('{id}/edit', 'TagController@getEditTag')->middleware('can:edit-tags');
         Route::name('update-tag')->put('{id}/update', 'TagController@updateTag')->middleware('can:edit-tags');
         Route::name('remove-tag')->delete('{id}/remove', 'TagController@removeTag')->middleware('can:remove-tags');
+    });
+
+    Route::group(['prefix' => 'role', 'as' => 'role.'], function () {
+        Route::name('list-roles')->get('/', 'RoleController@getAllRoles')->middleware('can:list-roles');
+        Route::name('create-role')->get('create', 'RoleController@getCreateRole')->middleware('can:create-roles');
+        Route::name('store-role')->post('store', 'RoleController@storeRole')->middleware('can:create-roles');
+        Route::name('edit-role')->get('{id}/edit', 'RoleController@getEditRole')->middleware('can:edit-roles');
+        Route::name('update-role')->put('{id}/update', 'RoleController@updateRole')->middleware('can:edit-roles');
+        Route::name('remove-role')->delete('{id}/remove', 'RoleController@removeRole')->middleware('can:remove-roles');
     });
 
     Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
