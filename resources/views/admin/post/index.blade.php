@@ -16,7 +16,9 @@
                                         <th>Status</th>
                                         <th>Created at</th>
                                         <th>Author</th>
-                                        <th>Actions</th>
+                                        @can('edit-posts')
+                                            <th>Actions</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>

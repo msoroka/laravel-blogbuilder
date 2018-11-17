@@ -5,6 +5,7 @@ namespace App\Handlers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PostHandler
@@ -22,10 +23,8 @@ class PostHandler
     public function storePost(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'author_id'      => 'required',
-            'content'  => 'required',
-            'status'   => 'required',
+            'name'    => 'required|string',
+            'content' => 'required',
         ]);
 
         $data = $request->only([
@@ -34,6 +33,14 @@ class PostHandler
             'content',
             'status',
         ]);
+
+        if ($request->only(['status']) == null) {
+            $data['status'] = '1';
+        }
+
+        if ($request->only(['author_id']) == null) {
+            $data['author_id'] = Auth::user()->id;
+        }
 
         if ($validator->fails()) {
             flash('Sorry, something went wrong. Please try again.')->error();
@@ -59,10 +66,10 @@ class PostHandler
         $post = Post::find($id);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'author_id'      => 'required',
-            'content'  => 'required',
-            'status'   => 'required',
+            'name'      => 'required|string',
+            'author_id' => 'required',
+            'content'   => 'required',
+            'status'    => 'required',
         ]);
 
         $data = $request->only([
