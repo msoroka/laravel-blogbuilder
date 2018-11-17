@@ -16,6 +16,7 @@ class PermissionTableSeeder extends Seeder
         $this->userPermissions();
         $this->postPermissions();
         $this->categoryPermissions();
+        $this->tagPermissions();
     }
 
     protected function globalPermissions()
@@ -107,6 +108,28 @@ class PermissionTableSeeder extends Seeder
         $permission = new Permission();
         $permission->slug = 'remove-categories';
         $permission->name = 'Remove categories';
+        $permission->save();
+    }
+    protected function tagPermissions()
+    {
+        $permission = new Permission();
+        $permission->slug = 'list-tags';
+        $permission->name = 'List tags';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'create-tags';
+        $permission->name = 'Create tags';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'edit-tags';
+        $permission->name = 'Edit tags';
+        $permission->save();
+
+        $permission = new Permission();
+        $permission->slug = 'remove-tags';
+        $permission->name = 'Remove tags';
         $permission->save();
     }
 }
