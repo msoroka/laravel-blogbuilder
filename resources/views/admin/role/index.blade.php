@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">Roles list</div>
                 <div class="card-body">
@@ -16,7 +16,7 @@
                                             <th>Name</th>
                                             <th>Slug</th>
                                             @if((Auth::user()->can('edit-roles') || Auth::user()->can('remove-roles')) && $roles->count() > 1)
-                                                <th>Actions</th>
+                                                <th class="min-width text-right">Actions</th>
                                             @endif
                                         </tr>
                                     </thead>

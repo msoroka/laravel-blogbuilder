@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
     });
 });
 
-Route::get('/', function () {
+Route::name('home')->get('/', function () {
     return view('home');
 });
 

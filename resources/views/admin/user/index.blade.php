@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">Users list</div>
                 <div class="card-body">
@@ -16,7 +16,7 @@
                                         <th>Nickname</th>
                                         <th>E-mail</th>
                                         @if(Auth::user()->can('edit-users') || Auth::user()->can('remove-users'))
-                                            <th>Actions</th>
+                                            <th class="min-width text-right">Actions</th>
                                         @endif
                                     </tr>
                                 </thead>

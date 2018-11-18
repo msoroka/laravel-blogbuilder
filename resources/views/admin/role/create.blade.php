@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {{ Form::open(['route' => ['admin.role.store-role']]) }}
                 <div class="card shadow">
                     <div class="card-header">Create role</div>
