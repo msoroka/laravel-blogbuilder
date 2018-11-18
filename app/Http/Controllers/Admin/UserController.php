@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Handlers\UserHandler;
+use App\Handlers\RoleHandler;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,9 +11,10 @@ class UserController extends Controller
 {
     protected $handler;
 
-    public function __construct(UserHandler $handler)
+    public function __construct(UserHandler $handler, RoleHandler $roleHandler)
     {
         $this->handler = $handler;
+        $this->roleHandler = $roleHandler;
     }
 
     public function getAllUsers()
@@ -24,7 +26,10 @@ class UserController extends Controller
 
     public function getCreateUser()
     {
-        return view('admin.user.create');
+        return view('admin.user.create', [
+            'roles' => $this->roleHandler->getAllRoles(),
+            'permissions' => $this->roleHandler->getAllPermissions(),
+        ]);
     }
 
     public function storeUser(Request $request)
@@ -36,6 +41,8 @@ class UserController extends Controller
     {
         return view('admin.user.edit', [
             'user' => $this->handler->editUser($id),
+            'roles' => $this->roleHandler->getAllRoles(),
+            'permissions' => $this->roleHandler->getAllPermissions(),
         ]);
     }
 

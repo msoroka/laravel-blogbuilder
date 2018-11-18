@@ -50,6 +50,9 @@ class UserHandler
             return redirect()->back()->withInput();
         }
 
+        $user->roles()->sync($request->roles);
+        $user->permissions()->sync($request->permissions);
+
         flash('Success')->success();
 
         return redirect()->route('admin.user.list-users');
@@ -85,11 +88,13 @@ class UserHandler
             return redirect()->back()->withInput();
         }
 
-        $user = $user->update($data);
-
         if (!$user) {
             return redirect()->back()->withInput();
         }
+
+        $user->roles()->sync($request->roles);
+        $user->permissions()->sync($request->permissions);
+        $user = $user->update($data);
 
         flash('Success')->success();
 
