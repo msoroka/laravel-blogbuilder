@@ -1,48 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h1>Admin dashboard</h1>
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{ route('admin.post.list-posts') }}">
-                        <button class="btn btn-primary btn-lg">
-                            Posts
-                        </button>
-                    </a> 
-                </div>
-                <div class="col-12" style="margin-top: 10px;">
-                    <a href="{{ route('admin.user.list-users') }}">
-                        <button class="btn btn-primary btn-lg">
-                            Users
-                        </button>
-                    </a>
-                </div>
-                <div class="col-12" style="margin-top: 10px;">
-                    <a href="{{ route('admin.role.list-roles') }}">
-                        <button class="btn btn-primary btn-lg">
-                            Roles
-                        </button>
-                    </a>
-                </div>
-                <div class="col-12" style="margin-top: 10px;">
-                    <a href="{{ route('admin.category.list-categories') }}">
-                        <button class="btn btn-primary btn-lg">
-                            Categories
-                        </button>
-                    </a>
-                </div>
-                <div class="col-12" style="margin-top: 10px;">
-                    <a href="{{ route('admin.tag.list-tags') }}">
-                        <button class="btn btn-primary btn-lg">
-                            Tags
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Welcome in {{ config('app.name', 'Laravel') }} Dashboard</h1>
+        <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin nunc lacus, nec aliquet quam iaculis eu. Sed sollicitudin leo eget dignissim ultricies. In at neque viverra, vulputate dolor sit amet, posuere ex. Aenean molestie finibus elementum. Sed hendrerit nisl sed eros sagittis, a molestie odio vulputate. Praesent ante lacus, ultricies id lorem eget, pretium eleifend dolor. Praesent congue dapibus diam at pulvinar. Curabitur nec tortor enim.</p>
     </div>
-</div>
 @endsection

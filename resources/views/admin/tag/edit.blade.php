@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {{ Form::model($tag, ['route' => ['admin.tag.update-tag', $tag], 'method' => 'PUT']) }}
                 <div class="card shadow">
                     <div class="card-header">Edit tag</div>

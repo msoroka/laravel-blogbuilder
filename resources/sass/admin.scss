@@ -11,14 +11,16 @@
 body {
     margin: 0;
     padding: 0;
-    position: relative;;
+    position: relative;
+    background-color: #aaa;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.card-header{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.admin-content {
-    background-color: #888;
+.table>tbody>tr>td {
+    vertical-align: middle;
 }
