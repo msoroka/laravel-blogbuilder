@@ -28,13 +28,13 @@
 <body>
     <div id="app">
         @include('partials.admin-navbar')
-        @include('flash::message')
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
                     @include('partials.admin-sidebar')
                 </div>
                 <div class="col-md-8 admin-content" style="margin-top: 100px; margin-bottom: 50px;">
+                    @include('flash::message')
                     @yield('content')
                 </div>
             </div>

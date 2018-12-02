@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Handlers\CategoryHandler;
 use App\Handlers\PostHandler;
+use App\Handlers\TagHandler;
 use App\Handlers\UserHandler;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     protected $handler;
 
-    public function __construct(PostHandler $handler, UserHandler $userHandler)
-    {
-        $this->handler = $handler;
-        $this->userHandler = $userHandler;
+    public function __construct(
+        PostHandler $handler,
+        UserHandler $userHandler,
+        TagHandler $tagHandler,
+        CategoryHandler $categoryHandler
+    ) {
+        $this->handler         = $handler;
+        $this->userHandler     = $userHandler;
+        $this->tagHandler      = $tagHandler;
+        $this->categoryHandler = $categoryHandler;
     }
 
     public function getAllPosts()
@@ -27,8 +35,10 @@ class PostController extends Controller
     public function getCreatePost()
     {
         return view('admin.post.create', [
-            'statuses' => $this->handler->getPostStatuses(),
-            'users' => $this->userHandler->getAllUsers()->pluck('full_name', 'id'),
+            'statuses'   => $this->handler->getPostStatuses(),
+            'users'      => $this->userHandler->getAllUsers()->pluck('full_name', 'id'),
+            'categories' => $this->categoryHandler->getAllCategories()->pluck('name', 'id'),
+            'tags'       => $this->tagHandler->getAllTags()->pluck('name', 'id'),
         ]);
     }
 
@@ -40,9 +50,11 @@ class PostController extends Controller
     public function getEditPost($id)
     {
         return view('admin.post.edit', [
-            'post' => $this->handler->editPost($id),
+            'post'     => $this->handler->editPost($id),
             'statuses' => $this->handler->getPostStatuses(),
-            'users' => $this->userHandler->getAllUsers()->pluck('full_name', 'id'),
+            'users'    => $this->userHandler->getAllUsers()->pluck('full_name', 'id'),
+            'categories' => $this->categoryHandler->getAllCategories()->pluck('name', 'id'),
+            'tags'       => $this->tagHandler->getAllTags()->pluck('name', 'id'),
         ]);
     }
 

@@ -30,6 +30,7 @@ class PostHandler
         $data = $request->only([
             'name',
             'author_id',
+            'category_id',
             'content',
             'status',
         ]);
@@ -56,6 +57,8 @@ class PostHandler
             return redirect()->back()->withInput();
         }
 
+        $post->tags()->sync($request->tags);
+
         flash('Success')->success();
 
         return redirect()->route('admin.post.list-posts');
@@ -75,6 +78,7 @@ class PostHandler
         $data = $request->only([
             'name',
             'author_id',
+            'category_id',
             'content',
             'status',
         ]);
@@ -85,13 +89,14 @@ class PostHandler
             return redirect()->back()->withInput();
         }
 
-        $post = $post->update($data);
-
         if (!$post) {
             flash('Sorry, someting went wrong. Please try again.')->error();
 
             return redirect()->back()->withInput();
         }
+
+        $post->tags()->sync($request->tags);
+        $post = $post->update($data);
 
         flash('Success')->success();
 

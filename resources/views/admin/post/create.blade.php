@@ -33,9 +33,17 @@
                                 @can('assign-posts')
                                     <div class="form-group required">
                                         {{ Form::label('author_id', 'Author:', ['class' => 'control-label']) }}
-                                        {{ Form::select('author_id', $users, Auth::user()->id, ['class' => 'form-control my-editor', 'required' => true]) }}
+                                        {{ Form::select('author_id', $users, Auth::user()->id, ['class' => 'form-control', 'required' => true]) }}
                                     </div>
                                 @endcan
+                                <div class="form-group required">
+                                    {{ Form::label('category_id', 'Category:', ['class' => 'control-label']) }}
+                                    {{ Form::select('category_id', $categories, null, ['class' => 'form-control', 'required' => true]) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ Form::label('tags[]', 'Tags:', ['class' => 'control-label']) }}
+                                    {{ Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => false]) }}
+                                </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">

@@ -15,6 +15,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Status</th>
+                                            <th>Category</th>
                                             <th>Created at</th>
                                             <th>Author</th>
                                             @if(Auth::user()->can('edit-posts') || Auth::user()->can('remove-posts'))
@@ -27,6 +28,7 @@
                                             <tr>
                                                 <td>{{ $post->name }}</td>
                                                 <td>{{ $post->status_name }}</td>
+                                                <td>{{ $post->category->name }}</td>
                                                 <td>{{ $post->created_at }}</td>
                                                 <td>{{ $post->author->full_name }}</td>
                                                 <td class="min-width text-right">

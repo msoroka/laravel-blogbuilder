@@ -2,30 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Handlers\PostHandler;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(PostHandler $handler)
     {
-        $this->middleware([
-            'auth',
-            'role:admin',
-        ]);
+        $this->handler = $handler;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'posts' => $this->handler->getAllPosts(),
+        ]);
     }
 }
