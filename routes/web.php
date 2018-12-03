@@ -50,6 +50,11 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
         Route::name('remove-role')->delete('{id}/remove', 'RoleController@removeRole')->middleware('can:remove-roles');
     });
 
+    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+        Route::name('edit-setting')->get('edit', 'SettingController@getBlogSettings')->middleware('can:blog-settings');
+        Route::name('update-setting')->put('update', 'SettingController@updateBlogSettings')->middleware('can:blog-settings');
+    });
+
     Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
         Route::name('upload')->get('/', function () {
             return view('admin.upload.index');
