@@ -36,14 +36,22 @@
                                         {{ Form::select('author_id', $users, null, ['class' => 'form-control my-editor', 'required' => true]) }}
                                     </div>
                                 @endcan
-                                    <div class="form-group">
-                                        Created at:<br>
-                                        <strong>{{ $post->created_at }}</strong>
-                                    </div>
-                                    <div class="form-group">
-                                        Updated at:<br>
-                                        <strong>{{ $post->updated_at }}</strong>
-                                    </div>
+                                <div class="form-group required">
+                                    {{ Form::label('category_id', 'Category:', ['class' => 'control-label']) }}
+                                    {{ Form::select('category_id', $categories, null, ['class' => 'form-control', 'required' => true]) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ Form::label('tags[]', 'Tags:', ['class' => 'control-label']) }}
+                                    {{ Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => false]) }}
+                                </div>
+                                <div class="form-group">
+                                    Created at:<br>
+                                    <strong>{{ $post->created_at }}</strong>
+                                </div>
+                                <div class="form-group">
+                                    Updated at:<br>
+                                    <strong>{{ $post->updated_at }}</strong>
+                                </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
