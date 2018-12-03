@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-admin">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-            {{ config('app.name', 'Laravel') }} Dashboard
+            {{ App\Models\Setting::all()->first()->name }} Dashboard
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

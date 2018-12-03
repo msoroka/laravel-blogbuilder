@@ -31,6 +31,11 @@ class PermissionTableSeeder extends Seeder
         $permission->slug = 'upload-files';
         $permission->name = 'Upload files';
         $permission->save();
+
+        $permission       = new Permission();
+        $permission->slug = 'blog-settings';
+        $permission->name = 'Blog settings';
+        $permission->save();
     }
 
     protected function userPermissions()

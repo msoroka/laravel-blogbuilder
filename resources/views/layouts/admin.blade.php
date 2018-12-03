@@ -6,8 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="{{ App\Models\Setting::all()->first()->description }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ App\Models\Setting::all()->first()->name }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

@@ -74,4 +74,14 @@
             @endcan
         </div>
     @endcan
+    @can('blog-settings')
+        <a style="font-weight: 600; margin-bottom: 10px; font-size: 17px; text-transform: uppercase;" class="btn btn-primary btn-block text-left" data-toggle="collapse" href="#collapeSetting" role="button" aria-expanded="false" aria-controls="collapeSetting">
+            Settings 
+        </a>
+        <div class="collapse" id="collapeSetting">
+            <a href="{{ route('admin.setting.edit-setting') }}" class="btn btn-primary btn-block text-left">
+                Blog settings
+            </a>
+        </div>
+    @endcan
 </nav>
