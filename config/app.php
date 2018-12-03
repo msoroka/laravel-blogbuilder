@@ -108,6 +108,8 @@ return [
 
     'cipher'          => 'AES-256-CBC',
 
+    'email'           => env('APP_EMAIL'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

@@ -4,6 +4,8 @@ namespace App\Handlers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserHandler
@@ -53,6 +55,12 @@ class UserHandler
         $user->roles()->sync($request->roles);
         $user->permissions()->sync($request->permissions);
 
+        Mail::send([], [], function ($message) use ($user) {
+            $message->to(config('app.email'))
+                ->subject('New user created')
+                ->setBody('User ' . $user->full_name . ' was created by ' . Auth::user()->full_name);
+        });
+
         flash('Success')->success();
 
         return redirect()->route('admin.user.list-users');
@@ -94,6 +102,13 @@ class UserHandler
 
         $user->roles()->sync($request->roles);
         $user->permissions()->sync($request->permissions);
+
+        Mail::send([], [], function ($message) use ($user) {
+            $message->to(config('app.email'))
+                ->subject($user->full_name . ' was updated')
+                ->setBody('User ' . $user->full_name . ' was updated by ' . Auth::user()->full_name);
+        });
+
         $user = $user->update($data);
 
         flash('Success')->success();
@@ -104,6 +119,12 @@ class UserHandler
     public function removeUser($id)
     {
         $user = User::find($id);
+
+        Mail::send([], [], function ($message) use ($user) {
+            $message->to(config('app.email'))
+                ->subject($user->full_name . ' was deleted')
+                ->setBody('User ' . $user->full_name . ' was deleted by ' . Auth::user()->full_name);
+        });
 
         if ($user->delete()) {
             flash('Success')->success();
