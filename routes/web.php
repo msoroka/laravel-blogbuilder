@@ -64,4 +64,9 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
 
 Route::name('home')->get('/', 'HomeController@index');
 
+Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function () {
+    Route::name('subscribe')->post('subscribe', 'SubscriptionController@subscribe');
+    Route::name('unsubscribe')->get('unsubscribe', 'SubscriptionController@unsubscribe');
+});
+
 Auth::routes();

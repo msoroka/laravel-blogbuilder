@@ -24,6 +24,7 @@
 <body>
     <div id="app">
         @include('partials.navbar')
+        @include('partials.errors')
         @include('flash::message')
         <main class="py-4">
             @yield('content')

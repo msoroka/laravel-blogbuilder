@@ -37,5 +37,25 @@
             </div>
         </div>
     @endforeach
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">Zapisz się do newslettera!</div>
+                <div class="col-9">
+                    {{ Form::open(['route' => 'newsletter.subscribe']) }}
+                        <div class="row">
+                            <div class="col-9">
+                                {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Adres e-mail', 'required' => true]) }}
+                            </div>
+                            <div class="col-3">
+                                {{ Form::submit('Zapisz się', ['class' => 'btn btn-outline-secondary btn-block']) }}
+                            </div>
+                        </div>
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
