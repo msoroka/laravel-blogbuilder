@@ -41,15 +41,15 @@
     <div class="card mt-4">
         <div class="card-body">
             <div class="row">
-                <div class="col-3">Zapisz się do newslettera!</div>
+                <div class="col-3">Sign to newsletter!</div>
                 <div class="col-9">
                     {{ Form::open(['route' => 'newsletter.subscribe']) }}
                         <div class="row">
                             <div class="col-9">
-                                {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Adres e-mail', 'required' => true]) }}
+                                {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail adress', 'required' => true]) }}
                             </div>
                             <div class="col-3">
-                                {{ Form::submit('Zapisz się', ['class' => 'btn btn-outline-secondary btn-block']) }}
+                                {{ Form::submit('Sign', ['class' => 'btn btn-outline-secondary btn-block']) }}
                             </div>
                         </div>
                     {{ Form::close() }}
