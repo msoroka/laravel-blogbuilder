@@ -30,6 +30,8 @@
             <p class="card-text">
                 Content: {!! $post->content !!}
             </p>
+            <div class="fb-like" data-href="{{ route('single-post', ['id' => $post->id]) }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
             <div id="disqus_thread"></div>
             <script>
 
