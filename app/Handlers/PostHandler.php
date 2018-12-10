@@ -21,6 +21,11 @@ class PostHandler
         return Post::find($id);
     }
 
+    public function getPost($id)
+    {
+        return Post::find($id);
+    }
+
     public function storePost(Request $request)
     {
         $validator = Validator::make($request->all(), [

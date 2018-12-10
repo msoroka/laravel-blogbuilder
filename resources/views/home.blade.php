@@ -28,9 +28,9 @@
                     @endforeach
                 </p>
                 <hr>
-                <p class="card-text">
-                    Content: {!! $post->content !!}
-                </p>
+                <a href="{{ route('single-post', $post) }}" class="btn btn-primary" title="Edit">
+                    Read more
+                </a>
                 {{-- <a class="btn btn-primary" href="#">
                     Go somewhere
                 </a> --}}
