@@ -82,6 +82,9 @@
             <a href="{{ route('admin.setting.edit-setting') }}" class="btn btn-primary btn-block text-left">
                 Blog settings
             </a>
+            <a href="{{ route('admin.setting.logs-setting') }}" class="btn btn-primary btn-block text-left">
+                Logs
+            </a>
         </div>
     @endcan
 </nav>

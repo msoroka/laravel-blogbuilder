@@ -2,8 +2,8 @@
 
 namespace App\Handlers;
 
-use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,6 +52,10 @@ class RoleHandler
 
         $role->permissions()->sync($request->permissions);
 
+        activity()
+            ->withProperties(['Changed things:' => $role])
+            ->log('Role was created');
+
         flash('Success')->success();
 
         return redirect()->route('admin.role.list-roles');
@@ -84,6 +88,12 @@ class RoleHandler
         }
 
         $role->permissions()->sync($request->permissions);
+
+        $role = $role->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $role->getDirty()])
+            ->log('Role was updated');
+
         $role = $role->update($data);
 
         flash('Success')->success();
@@ -94,6 +104,10 @@ class RoleHandler
     public function removeRole($id)
     {
         $role = Role::find($id);
+
+        activity()
+            ->withProperties(['Changed things:' => $role])
+            ->log('Role was removed');
 
         if ($role->delete()) {
             flash('Success')->success();

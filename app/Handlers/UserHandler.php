@@ -20,6 +20,11 @@ class UserHandler
         return User::find($id);
     }
 
+    public function getUser($id)
+    {
+        return User::find($id);
+    }
+
     public function storeUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -54,6 +59,10 @@ class UserHandler
 
         $user->roles()->sync($request->roles);
         $user->permissions()->sync($request->permissions);
+
+        activity()
+            ->withProperties(['Changed things:' => $user])
+            ->log('User was created');
 
         Mail::send([], [], function ($message) use ($user) {
             $message->to(config('app.email'))
@@ -109,6 +118,11 @@ class UserHandler
                 ->setBody('User ' . $user->full_name . ' was updated by ' . Auth::user()->full_name);
         });
 
+        $user = $user->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $user->getDirty()])
+            ->log('User was updated');
+
         $user = $user->update($data);
 
         flash('Success')->success();
@@ -119,6 +133,10 @@ class UserHandler
     public function removeUser($id)
     {
         $user = User::find($id);
+
+        activity()
+            ->withProperties(['Changed things:' => $user])
+            ->log('User was removed');
 
         Mail::send([], [], function ($message) use ($user) {
             $message->to(config('app.email'))

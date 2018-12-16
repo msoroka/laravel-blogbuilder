@@ -25,6 +25,10 @@ class SubscriptionHandler
                 ]
             );
 
+        activity()
+            ->withProperties(['Changed things:' => $request->only('email')])
+            ->log('Subscribed to newsletter');
+
         flash('Successfull subscribed to newsletter.')->success();
 
         return redirect()->back(302, [], route('home'));
@@ -52,6 +56,10 @@ class SubscriptionHandler
             'unsubscribe_code' => null,
             'unsubscribed_at'  => Carbon::now(),
         ]);
+
+        activity()
+            ->withProperties(['Changed things:' => $request->only('email')])
+            ->log('Unsubscribed to newsletter');
 
         flash('Successfully unsubscribed from newsletter.')->success();
 
