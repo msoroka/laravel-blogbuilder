@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/navbar.js') }}" defer></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
     <!-- Fonts -->
@@ -20,6 +21,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/first.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="fb-root"></div>
@@ -35,7 +37,7 @@
         @include('partials.navbar')
         @include('partials.errors')
         @include('flash::message')
-        <main class="py-4">
+        <main class="py-2">
             @yield('content')
         </main>
     </div>

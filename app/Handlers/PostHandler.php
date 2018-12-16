@@ -13,7 +13,7 @@ class PostHandler
 {
     public function getAllPosts()
     {
-        return Post::all();
+        return Post::orderBy('created_at', 'desc')->get();
     }
 
     public function editPost($id)

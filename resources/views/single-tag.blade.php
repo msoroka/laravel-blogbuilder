@@ -4,6 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="post-title">
+                       All posts with tag: {{ $tag->name }}
+                    </h2>
+                </div>
+            </div>
             @foreach($posts as $post)
                 <div class="card mb-4">
                     <div class="card-body">
