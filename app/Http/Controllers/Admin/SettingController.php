@@ -6,6 +6,7 @@ use App\Handlers\SettingHandler;
 use App\Handlers\UserHandler;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class SettingController extends Controller
 {
@@ -26,5 +27,18 @@ class SettingController extends Controller
     public function updateBlogSettings(Request $request)
     {
         return $this->handler->updateBlogSettings($request);
+    }
+
+    public function getLogs()
+    {
+        $logs = Activity::orderBy('created_at', 'desc')->get()->each(function ($log){
+            if($log->causer_id){
+                $log->user = $this->userHandler->getUser($log->causer_id);
+            }
+        });
+
+        return view('admin.setting.logs', [
+            'logs' => $logs,
+        ]);
     }
 }

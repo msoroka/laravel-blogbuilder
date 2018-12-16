@@ -220,7 +220,7 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Debugbar'     => Barryvdh\Debugbar\Facade::class,
-        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
     ],
 

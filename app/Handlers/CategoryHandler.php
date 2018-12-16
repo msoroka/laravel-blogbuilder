@@ -18,7 +18,7 @@ class CategoryHandler
     public function editCategory($id)
     {
         $this->fixTree();
-        
+
         return Category::find($id);
     }
 
@@ -47,8 +47,12 @@ class CategoryHandler
             return redirect()->back()->withInput();
         }
 
+        activity()
+            ->withProperties(['Changed things:' => $category])
+            ->log('Category was created');
+
         $node = Category::find($data['parent_id']);
-        if($node) {
+        if ($node) {
             $node->appendNode($category);
         }
 
@@ -83,9 +87,14 @@ class CategoryHandler
         }
 
         $node = Category::find($data['parent_id']);
-        if($node) {
+        if ($node) {
             $node->appendNode($category);
         }
+
+        $category = $category->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $category->getDirty()])
+            ->log('Category was updated');
 
         $category = $category->update($data);
 
@@ -99,6 +108,10 @@ class CategoryHandler
     public function removeCategory($id)
     {
         $category = Category::find($id);
+
+        activity()
+            ->withProperties(['Changed things:' => $category])
+            ->log('Category was removed');
 
         if ($category->delete()) {
             flash('Success')->success();
@@ -115,7 +128,7 @@ class CategoryHandler
 
     public function fixTree()
     {
-        if(Category::isBroken()){
+        if (Category::isBroken()) {
             Category::fixTree();
         }
     }

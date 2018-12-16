@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
 
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
         Route::name('edit-setting')->get('edit', 'SettingController@getBlogSettings')->middleware('can:blog-settings');
+        Route::name('logs-setting')->get('logs', 'SettingController@getLogs')->middleware('can:blog-settings');
         Route::name('update-setting')->put('update', 'SettingController@updateBlogSettings')->middleware('can:blog-settings');
     });
 

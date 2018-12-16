@@ -42,6 +42,10 @@ class TagHandler
             return redirect()->back()->withInput();
         }
 
+        activity()
+            ->withProperties(['Changed things:' => $tag])
+            ->log('Tag was created');
+
         flash('Success')->success();
 
         return redirect()->route('admin.tag.list-tags');
@@ -65,6 +69,11 @@ class TagHandler
             return redirect()->back()->withInput();
         }
 
+        $tag = $tag->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $tag->getDirty()])
+            ->log('Tag was updated');
+
         $tag = $tag->update($data);
 
         if (!$tag) {
@@ -81,6 +90,10 @@ class TagHandler
     public function removeTag($id)
     {
         $tag = Tag::find($id);
+
+        activity()
+            ->withProperties(['Changed things:' => $tag])
+            ->log('Tag was removed');
 
         if ($tag->delete()) {
             flash('Success')->success();

@@ -39,6 +39,11 @@ class SettingHandler
             return redirect()->back()->withInput();
         }
 
+        $setting = $setting->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $setting->getDirty()])
+            ->log('Blog settings was changed');
+
         $setting = $setting->update($data);
 
         if (!$setting) {

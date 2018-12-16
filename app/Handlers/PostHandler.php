@@ -65,6 +65,10 @@ class PostHandler
 
         $post->tags()->sync($request->tags);
 
+        activity()
+            ->withProperties(['Changed things:' => $post])
+            ->log('Post was created');
+
         Mail::send([], [], function ($message) use ($post) {
             $message->to(config('app.email'))
                 ->subject('New post added')
@@ -115,6 +119,11 @@ class PostHandler
                 ->setBody(Auth::user()->full_name . ' updated post ' . $post->name);
         });
 
+        $post = $post->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $post->getDirty()])
+            ->log('Post was updated');
+
         $post = $post->update($data);
 
         flash('Success')->success();
@@ -125,6 +134,10 @@ class PostHandler
     public function removePost($id)
     {
         $post = post::find($id);
+
+        activity()
+            ->withProperties(['Changed things:' => $post])
+            ->log('Post was removed');
 
         Mail::send([], [], function ($message) use ($post) {
             $message->to(config('app.email'))
