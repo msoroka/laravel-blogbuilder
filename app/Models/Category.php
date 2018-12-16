@@ -36,6 +36,18 @@ class Category extends Model
         return $this->fullName;
     }
 
+    public function getPostsCounterAttribute()
+    {
+        $posts = 0;
+        $this->children->each(function($category) use (&$posts){
+            $posts += $category->posts->count();
+        });
+        
+        $posts += $this->posts->count();
+
+        return $posts;
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

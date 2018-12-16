@@ -36,11 +36,19 @@ class HomeController extends Controller
 
     public function getPostWithCategory($id)
     {
+        $category         = $this->categoryHandler->getCategory($id);
+        $ids = $category->children->map(function($cat){
+            return $cat->id;
+        });
+        $ids->push($category->id);
+        // dd($parent);
+        // $categoryParentId = $category->parent->id;
+
         return view('single-category', [
-            'posts'       => $this->handler->getAllPosts()->where('status', '2')->where('category_id', $id),
+            'posts'       => $this->handler->getAllPosts()->where('status', '2')->whereIn('category_id', $ids),
             'latestPosts' => $this->handler->getAllPosts()->where('status', '2')->take(5),
             'categories'  => $this->categoryHandler->getAllCategories(),
-            'category'    => $this->categoryHandler->getCategory($id),
+            'category'    => $category,
         ]);
     }
 
