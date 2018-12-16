@@ -74,3 +74,5 @@ Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function () {
 });
 
 Auth::routes();
+
+Route::permanentRedirect('/register', '/');

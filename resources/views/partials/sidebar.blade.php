@@ -52,13 +52,15 @@
                     <iframe class="social" height="520" src="{{ $instagram }}" frameborder="0"></iframe>
                 </div>
             @endisset
-            <div class="col-12">
-                <div class="card-body">
-                    <h5 class="card-title">Sign to newsletter!</h5>
-                    {{ Form::open(['route' => 'newsletter.subscribe']) }}
-                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail adress', 'required' => true]) }}
-                        {{ Form::submit('Sign', ['class' => 'btn btn-primary btn-block mt-2']) }}
-                    {{ Form::close() }}
+            <div class="col-12 mt-4">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Sign to newsletter!</h5>
+                        {{ Form::open(['route' => 'newsletter.subscribe']) }}
+                            {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail adress', 'required' => true]) }}
+                            {{ Form::submit('Sign', ['class' => 'btn btn-primary btn-block mt-2']) }}
+                        {{ Form::close() }}
+                    </div>
                 </div>
             </div>
         </div>
