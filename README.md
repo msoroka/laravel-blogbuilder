@@ -1,14 +1,34 @@
-<h2>BlogBuilder</h2><br>
+# BlogBuilder
 
-Mateusz Soroka (lider, backend i pomoc we frontendzie)<br>
-Bartłomiej Skopiński (frontend)<br>
-Patryk Szczepański (testy automatyczne i manualne)<br>
-Karol Tomczyk (inżynieria oprogramowania i pomoc w backendzie)<br>
+BlogBuilder to aplikacja blogowa oparta na Laravel 5.7. Wszystkie funkcjonalności zostały opisane w [dokumentacji](https://github.com/msoroka/laravel-blogbuilder/blob/master/documentation/User%20Stories.pdf). Dostępne są również [diagramy UML](https://github.com/msoroka/laravel-blogbuilder/tree/master/documentation/diagrams).
 
-1. System mikroblogów na podobieństwo WordPress.com z page builderem. Użytkownik po zarejestrowaniu będzie miał możliwość tworzenia nielimitowanej ilości blogów oraz stron wizytówek z możliwością wyboru kilku predefiniowanych motywów oraz prostym page builderem (drag and drop). Aplikacja skierowana będzie do blogerów oraz firm.<br>
-2. Administrator, Właściciel bloga/strony, Redaktor bloga, Zarejestrowany użytkownik i niezarejestrowany użytkownik
-3. Backend: Laravel 5.7 + mySQL<br>
-Frontend: Vue.js 2.5 + Bootstrap 4.1<br>
-4. Diagram  przypadków<br>
-5. Diagram ERD<br>
-6. <a href="https://docs.google.com/document/d/13FzYl5Oe2Qow_Dll7bDuIqZ2xxcq2z3q0Tbg7srS_XQ/edit?usp=sharing" target="_blank">Spis funkcjonalności</a> <br>
+### Uruchomienie
+
+Aplikacja posiada skonfigurowany plik **docker-compose.yml** dzięki czemu można uruchomić ją za pomocą [Dockera](https://www.docker.com/) bez konieczności konfigurowania całego środowiska deweloperskiego. Poniżej kolejne kroki, które należy podjąć.
+
+- Zbudowanie obrazu
+```sh
+$ docker-compose up
+```
+- Utworzenie zmiennej środowiskowej 
+```sh
+$ cp .env.example .env
+```
+ - Otworzenie pliku **.env** dowolnym edytorem tekstowym i ustawienie komunikacji z bazą danych
+```sh
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=blogbuilder
+DB_USERNAME=blog
+DB_PASSWORD=blog123
+```
+ - Utworzenie klucza aplikacji, uruchomienie migracji i seederów
+```sh
+$ docker-compose exec app php artisan key:generate
+$ docker-compose exec app php artisan migrate:refresh --seed
+```
+- Aplikacja jest teraz dostępna pod adresem
+```sh
+localhost:8080
+```
