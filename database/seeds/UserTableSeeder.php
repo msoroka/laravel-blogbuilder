@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
         $user->first_name = 'Mateusz';
         $user->last_name = 'Soroka';
         $user->nickname = 'msoroka';
-        $user->email = 'ms@example.com';
+        $user->email = 'xmsoroka@gmail.com';
         $user->password = 'test123';
         $user->save();
         $user->roles()->attach($adminRole);

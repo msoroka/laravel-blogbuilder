@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
@@ -9,5 +10,13 @@ class Setting extends Model
     protected $fillable = [
         'name',
         'description',
+        'facebook',
+        'instagram',
+        'owner_id',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }

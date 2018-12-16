@@ -14,7 +14,7 @@ class SettingTableSeeder extends Seeder
     {
         $setting = new Setting();
         $setting->name = 'Blog builder';
-        $setting->description = 'Test';
+        $setting->description = 'Test description';
         $setting->save();
     }
 }

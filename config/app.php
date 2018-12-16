@@ -156,6 +156,7 @@ return [
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -166,7 +167,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\PermissionsServiceProvider::class,
-
     ],
 
     /*
@@ -220,6 +220,8 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Debugbar'     => Barryvdh\Debugbar\Facade::class,
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+
     ],
 
 ];
