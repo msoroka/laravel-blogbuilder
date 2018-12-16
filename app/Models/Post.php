@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Post extends Model
 {

@@ -22,6 +22,11 @@ class CategoryHandler
         return Category::find($id);
     }
 
+    public function getCategory($id)
+    {
+        return Category::find($id);
+    }
+
     public function storeCategory(Request $request)
     {
         $validator = Validator::make($request->all(), [

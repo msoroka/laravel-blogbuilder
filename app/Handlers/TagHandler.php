@@ -18,6 +18,11 @@ class TagHandler
         return Tag::find($id);
     }
 
+    public function getTag($id)
+    {
+        return Tag::find($id);
+    }
+
     public function storeTag(Request $request)
     {
         $validator = Validator::make($request->all(), [

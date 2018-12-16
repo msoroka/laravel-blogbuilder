@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
 
 Route::name('home')->get('/', 'HomeController@index');
 Route::name('single-post')->get('/post/{id}', 'HomeController@getPost');
+Route::name('single-category')->get('/category/{id}', 'HomeController@getPostWithCategory');
+Route::name('single-tag')->get('/tag/{id}', 'HomeController@getPostWithTag');
 
 Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function () {
     Route::name('subscribe')->post('subscribe', 'SubscriptionController@subscribe');
