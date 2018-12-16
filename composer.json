@@ -12,7 +12,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
-        "unisharp/laravel-filemanager": "~1.8"
+        "unisharp/laravel-filemanager": "~1.8",
+        "thomaswelton/laravel-gravatar": "~1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

@@ -6,9 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="{{ App\Models\Setting::all()->first()->description }}">
+    <meta name="description" content="{{ $description }}">
 
-    <title>{{ App\Models\Setting::all()->first()->name }}</title>
+    <title>{{ $title }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

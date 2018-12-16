@@ -20,11 +20,17 @@ class SettingHandler
         $validator = Validator::make($request->all(), [
             'name'        => 'required|string',
             'description' => 'required',
+            'facebook'    => 'string|nullable',
+            'instagram'   => 'string|nullable',
+            'owner_id'    => 'integer|nullable',
         ]);
 
         $data = $request->only([
             'name',
             'description',
+            'facebook',
+            'instagram',
+            'owner_id',
         ]);
 
         if ($validator->fails()) {
