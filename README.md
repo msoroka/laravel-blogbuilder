@@ -25,6 +25,7 @@ DB_PASSWORD=blog123
 ```
  - Utworzenie klucza aplikacji, uruchomienie migracji i seederów
 ```sh
+$ docker-compose exec app composer update
 $ docker-compose exec app php artisan key:generate
 $ docker-compose exec app php artisan migrate:refresh --seed
 ```

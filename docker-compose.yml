@@ -2,6 +2,13 @@ version: '2'
 services:
 
   # The Application
+  composer:
+    restart: 'no'
+    image: "composer"
+    command: install
+    volumes:
+      - .:/app
+
   app:
     build:
       context: ./
@@ -36,13 +43,6 @@ services:
       - "MYSQL_ROOT_PASSWORD=root"
     ports:
         - "33061:3306"
-
-  composer:
-    restart: 'no'
-    image: "composer"
-    command: install
-    volumes:
-      - .:/app
 
 volumes:
   dbdata:
