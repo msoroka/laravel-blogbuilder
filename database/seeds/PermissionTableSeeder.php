@@ -36,6 +36,11 @@ class PermissionTableSeeder extends Seeder
         $permission->slug = 'blog-settings';
         $permission->name = 'Blog settings';
         $permission->save();
+
+        $permission       = new Permission();
+        $permission->slug = 'contact';
+        $permission->name = 'contact';
+        $permission->save();
     }
 
     protected function userPermissions()

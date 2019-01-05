@@ -74,6 +74,19 @@
             @endcan
         </div>
     @endcan
+    @can('contact')
+        <a style="font-weight: 600; margin-bottom: 10px; font-size: 17px; text-transform: uppercase;" class="btn btn-primary btn-block text-left" data-toggle="collapse" href="#collapseContact" role="button" aria-expanded="false" aria-controls="collapseContact">
+            Contacts 
+        </a>
+        <div class="collapse" id="collapseContact">
+            <a href="{{ route('admin.contact.list-contacts') }}" class="btn btn-primary btn-block text-left">
+                List of contacts
+            </a>
+            <a href="{{ route('admin.contact.list-contacts-history') }}" class="btn btn-primary btn-block text-left">
+                Contacts history
+            </a>
+        </div>
+    @endcan
     @can('blog-settings')
         <a style="font-weight: 600; margin-bottom: 10px; font-size: 17px; text-transform: uppercase;" class="btn btn-primary btn-block text-left" data-toggle="collapse" href="#collapeSetting" role="button" aria-expanded="false" aria-controls="collapeSetting">
             Settings 
