@@ -21,4 +21,5 @@ mix.sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/admin-sidebar.scss', 'public/css');
 mix.copy('resources/themes/first.png', 'public/images')
     .copy('resources/themes/second.png', 'public/images')
-    .copy('resources/themes/third.png', 'public/images');
+    .copy('resources/themes/third.png', 'public/images')
+    .copy('resources/assets/favicon.ico', 'public/');

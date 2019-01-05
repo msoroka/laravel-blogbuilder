@@ -9,7 +9,7 @@
                     <a class="nav-link {{ request()->route()->getName() == 'home' ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->route()->getName() == 'about' ? 'active' : '' }}" href="#">About</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->route()->getName() == 'contact' ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>

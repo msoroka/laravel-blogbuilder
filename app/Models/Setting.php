@@ -14,6 +14,7 @@ class Setting extends Model
         'instagram',
         'owner_id',
         'theme',
+        'about',
     ];
 
     public function owner()

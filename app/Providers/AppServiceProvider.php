@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
             View::share('instagram', Setting::all()->first()->instagram ?? null);
             View::share('owner', Setting::all()->first()->owner ?? null);
             View::share('theme', Setting::all()->first()->theme ?? null);
+            View::share('about', Setting::all()->first()->about ?? null);
 
             $css = 'css/' . Setting::all()->first()->theme . '.css';
 
