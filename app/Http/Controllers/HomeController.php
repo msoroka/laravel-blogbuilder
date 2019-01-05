@@ -97,4 +97,9 @@ class HomeController extends Controller
     {
         return $this->contactHandler->storeContact($request);
     }
+
+    public function getChangePassword()
+    {
+        return view('auth.change-password');
+    }
 }

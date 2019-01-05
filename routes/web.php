@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth', 'can:dashboard', 'active'], 'prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     Route::name('dashboard')->get('/', function () {
         return view('admin.dashboard');
     });
@@ -79,6 +79,9 @@ Route::name('single-tag')->get('/tag/{id}', 'HomeController@getPostWithTag');
 Route::name('single-author')->get('/author/{id}', 'HomeController@getPostWithAuthor');
 Route::name('contact')->get('/contact', 'HomeController@getContactForm');
 Route::name('store-contact')->post('store', 'HomeController@storeContactForm');
+
+Route::name('change-password')->get('change-password', 'HomeController@getChangePassword');
+Route::name('change-first-password')->post('change-first-password', 'Admin\UserController@updateUserFirstPassword');
 
 Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function () {
     Route::name('subscribe')->post('subscribe', 'SubscriptionController@subscribe');
