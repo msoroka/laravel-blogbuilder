@@ -18,11 +18,17 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="{{ $font }}" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset($css) }}" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: '{{ $fontName }}', sans-serif !important;
+        }
+    </style>
 </head>
 <body>
     <div id="fb-root"></div>

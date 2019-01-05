@@ -55,6 +55,14 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    {{ Form::label('font', 'Link to font:', ['class' => 'control-label']) }}
+                                    {{ Form::text('font', null, ['class' => 'form-control', 'required' => false]) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
                                     <img src="/images/first.png" width="50%">
                                     {{ Form::radio('theme', 'first' , $setting->theme) }} First <br>
                                     <hr>

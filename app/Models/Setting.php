@@ -15,6 +15,7 @@ class Setting extends Model
         'owner_id',
         'theme',
         'about',
+        'font',
     ];
 
     public function owner()

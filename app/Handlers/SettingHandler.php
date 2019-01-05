@@ -29,6 +29,7 @@ class SettingHandler
             'instagram'   => 'string|nullable',
             'owner_id'    => 'integer|nullable',
             'theme'       => 'required|string',
+            'font'        => 'required',
         ]);
 
         $data = $request->only([
@@ -39,6 +40,7 @@ class SettingHandler
             'owner_id',
             'theme',
             'about',
+            'font',
         ]);
 
         if ($validator->fails()) {

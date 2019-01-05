@@ -26,10 +26,13 @@ class AppServiceProvider extends ServiceProvider
             View::share('owner', Setting::all()->first()->owner ?? null);
             View::share('theme', Setting::all()->first()->theme ?? null);
             View::share('about', Setting::all()->first()->about ?? null);
+            View::share('font', Setting::all()->first()->font ?? null);
 
+            preg_match('/([A-Z])\w+/', Setting::all()->first()->font, $fontName);
             $css = 'css/' . Setting::all()->first()->theme . '.css';
 
             View::share('css', $css ?? null);
+            View::share('fontName', $fontName[0] ?? null);
             View::share('date', Carbon::now()->format('d F Y') ?? null);
         }
     }
