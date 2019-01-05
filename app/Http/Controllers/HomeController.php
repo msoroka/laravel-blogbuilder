@@ -7,18 +7,20 @@ use App\Handlers\ContactHandler;
 use App\Handlers\PostHandler;
 use App\Handlers\SettingHandler;
 use App\Handlers\TagHandler;
+use App\Handlers\UserHandler;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __construct(PostHandler $handler, CategoryHandler $categoryHandler, TagHandler $tagHandler, SettingHandler $settingHandler, ContactHandler $contactHandler)
+    public function __construct(PostHandler $handler, CategoryHandler $categoryHandler, TagHandler $tagHandler, SettingHandler $settingHandler, ContactHandler $contactHandler, UserHandler $userHandler)
     {
         $this->handler         = $handler;
         $this->categoryHandler = $categoryHandler;
         $this->tagHandler      = $tagHandler;
         $this->theme           = $settingHandler->getTheme();
         $this->contactHandler  = $contactHandler;
+        $this->userHandler     = $userHandler;
     }
 
     public function index()
@@ -68,6 +70,18 @@ class HomeController extends Controller
             'latestPosts' => $this->handler->getAllPosts()->where('status', '2')->take(5),
             'categories'  => $this->categoryHandler->getAllCategories(),
             'tag'         => $tag,
+        ]);
+    }
+
+    public function getPostWithAuthor($id)
+    {
+        $author = $this->userHandler->getUser($id);
+
+        return view($this->theme . '.single-author', [
+            'posts'       => $this->handler->getAllPosts()->where('author_id', $id),
+            'latestPosts' => $this->handler->getAllPosts()->where('status', '2')->take(5),
+            'categories'  => $this->categoryHandler->getAllCategories(),
+            'author'      => $author,
         ]);
     }
 
