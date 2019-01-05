@@ -56,6 +56,15 @@ Route::group(['middleware' => ['auth', 'can:dashboard'], 'prefix' => 'admin', 'a
         Route::name('update-setting')->put('update', 'SettingController@updateBlogSettings')->middleware('can:blog-settings');
     });
 
+    Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+        Route::name('list-contacts')->get('/', 'ContactController@getAllContacts')->middleware('can:contact');
+        Route::name('list-contacts-history')->get('/history', 'ContactController@getAllContactsHistory')->middleware('can:contact');
+        Route::name('reply-contact')->get('{id}/reply', 'ContactController@replyContact')->middleware('can:contact');
+        Route::name('details-contact')->get('{id}/details', 'ContactController@getContactDetails')->middleware('can:contact');
+        Route::name('remove-contact')->delete('{id}/remove', 'ContactController@removeContact')->middleware('can:contact');
+        Route::name('update-contact')->put('{id}/update', 'ContactController@updateContact')->middleware('can:contact');
+    });
+
     Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
         Route::name('upload')->get('/', function () {
             return view('admin.upload.index');
@@ -67,6 +76,8 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('single-post')->get('/post/{id}', 'HomeController@getPost');
 Route::name('single-category')->get('/category/{id}', 'HomeController@getPostWithCategory');
 Route::name('single-tag')->get('/tag/{id}', 'HomeController@getPostWithTag');
+Route::name('contact')->get('/contact', 'HomeController@getContactForm');
+Route::name('store-contact')->post('store', 'HomeController@storeContactForm');
 
 Route::group(['prefix' => 'newsletter', 'as' => 'newsletter.'], function () {
     Route::name('subscribe')->post('subscribe', 'SubscriptionController@subscribe');
