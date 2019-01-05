@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
             <div class="card">
-                <div class="card-header">{{ __('Set New Password') }}</div>
+                <h3 class="text-center mt-3">Before first getting to admin dashboard, you have to change your password.</h3>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('change-first-password') }}">
