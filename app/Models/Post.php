@@ -16,6 +16,7 @@ class Post extends Model
         'name',
         'content',
         'status',
+        'image',
     ];
 
     protected static $postStatuses = [

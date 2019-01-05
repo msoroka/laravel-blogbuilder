@@ -13,6 +13,7 @@ class Setting extends Model
         'facebook',
         'instagram',
         'owner_id',
+        'theme',
     ];
 
     public function owner()

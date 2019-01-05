@@ -14,6 +14,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/navbar.js') }}" defer></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -21,7 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/first.css') }}" rel="stylesheet">
+    <link href="{{ asset($css) }}" rel="stylesheet">
 </head>
 <body>
     <div id="fb-root"></div>
@@ -34,7 +35,7 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 
     <div id="app">
-        @include('partials.navbar')
+        @include($theme . '.navbar')
         @include('partials.errors')
         @include('flash::message')
         <main class="py-2">

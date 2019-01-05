@@ -2,7 +2,12 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/first.css": "/css/first.css",
+    "/css/second.css": "/css/second.css",
+    "/css/third.css": "/css/third.css",
     "/css/admin.css": "/css/admin.css",
     "/css/admin-sidebar.css": "/css/admin-sidebar.css",
-    "/js/navbar.js": "/js/navbar.js"
+    "/js/navbar.js": "/js/navbar.js",
+    "/images/first.png": "/images/first.png",
+    "/images/second.png": "/images/second.png",
+    "/images/third.png": "/images/third.png"
 }
