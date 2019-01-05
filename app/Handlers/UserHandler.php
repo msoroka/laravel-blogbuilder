@@ -154,4 +154,41 @@ class UserHandler
 
         return redirect()->route('admin.user.list-users');
     }
+
+    public function updateUserFirstPassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            flash('Sorry, someting went wrong. Please try again.')->error();
+
+            return redirect()->back()->withInput();
+        }
+
+        if (!$user) {
+            flash('Sorry, someting went wrong. Please try again.')->error();
+
+            return redirect()->back()->withInput();
+        }
+
+        $data = $request->only([
+            'password',
+        ]);
+        $data['active'] = true;
+
+        $user = $user->fill($data);
+        activity()
+            ->withProperties(['Changed things:' => $user->getDirty()])
+            ->log('User was updated');
+
+        $user = $user->update($data);
+
+        flash('Success')->success();
+
+        return redirect()->route('admin.dashboard');
+    }
 }

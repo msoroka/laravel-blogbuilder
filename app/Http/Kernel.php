@@ -4,6 +4,7 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Middleware\CheckUserActive;
 
 class Kernel extends HttpKernel
 {
@@ -63,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'role' => RoleMiddleware::class,
+        'active' => CheckUserActive::class,
     ];
 }

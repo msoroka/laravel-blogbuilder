@@ -55,4 +55,9 @@ class UserController extends Controller
     {
         return $this->handler->removeUser($id);
     }
+
+    public function updateUserFirstPassword(Request $request)
+    {
+        return $this->handler->updateUserFirstPassword($request);
+    }
 }
