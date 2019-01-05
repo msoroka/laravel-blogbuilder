@@ -76,6 +76,7 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('single-post')->get('/post/{id}', 'HomeController@getPost');
 Route::name('single-category')->get('/category/{id}', 'HomeController@getPostWithCategory');
 Route::name('single-tag')->get('/tag/{id}', 'HomeController@getPostWithTag');
+Route::name('single-author')->get('/author/{id}', 'HomeController@getPostWithAuthor');
 Route::name('contact')->get('/contact', 'HomeController@getContactForm');
 Route::name('store-contact')->post('store', 'HomeController@storeContactForm');
 

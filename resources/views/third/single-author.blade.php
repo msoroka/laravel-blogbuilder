@@ -12,7 +12,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="post-title">
-                       All posts with category: {{ $category->name }}
+                       All posts with user: {{ $author->full_name }}
                     </h2>
                 </div>
             </div>

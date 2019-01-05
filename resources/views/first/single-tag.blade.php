@@ -38,7 +38,7 @@
                                     {!! str_limit($post->content, 250) !!}
                                 </p>
                                 <p class="post-meta">
-                                    {{ $post->author->full_name }}, {{ $post->created_at->format('d F Y') }}, <a href="{{ route('single-category', $post->category) }}"  title="{{ $post->category->name }}">{{ $post->category->name }}</a>
+                                    <a href="{{ route('single-author', $post->author->id) }}"  title="Show post">{{ $post->author->full_name }}</a>, {{ $post->created_at->format('d F Y') }}, <a href="{{ route('single-category', $post->category) }}"  title="{{ $post->category->name }}">{{ $post->category->name }}</a>
                                 </p>
                             </div>
                         </div>

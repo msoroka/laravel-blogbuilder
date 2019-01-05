@@ -23,7 +23,7 @@
                         {!! $post->content !!}
                     </p>
                     <p class="post-meta">
-                        Posted on: {{ $post->created_at->format('Y-m-d') }} by: {{ $post->author->full_name }} in <a href="{{ route('single-category', $post->category) }}"  title="Show post">{{ $post->category->name }}</a>
+                        Posted on: {{ $post->created_at->format('Y-m-d') }} by: <a href="{{ route('single-author', $post->author->id) }}"  title="Show post">{{ $post->author->full_name }}</a> in <a href="{{ route('single-category', $post->category) }}"  title="Show post">{{ $post->category->name }}</a>
                     </p>
                     <div class="fb-like mt-2" data-href="{{ route('single-post', ['id' => $post->id]) }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                     <div id="disqus_thread" class="mt-2"></div>

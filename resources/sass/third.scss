@@ -76,11 +76,14 @@ img {
     height: 200px !important;
     object-fit: cover !important;
 }
-.post-author {
+.post-author{
     text-align: right !important;
     margin-bottom: -15px !important;
     margin-right: -15px !important;
     text-transform: uppercase !important;
+    color: #aaa !important;
+}
+.post-author a {
     color: #aaa !important;
 }
 .card-post {

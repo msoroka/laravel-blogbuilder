@@ -20,7 +20,7 @@
                            {{ $post->name }}
                     </h2>
                     <p class="post-meta">
-                        Posted on: {{ $post->created_at->format('Y-m-d') }} by: {{ $post->author->full_name }} in <a href="{{ route('single-category', $post->category) }}"  title="Show post">{{ $post->category->name }}</a>
+                        Posted on: {{ $post->created_at->format('Y-m-d') }} by: <a href="{{ route('single-author', $post->author->id) }}"  title="Show post">{{ $post->author->full_name }}</a> in <a href="{{ route('single-category', $post->category) }}"  title="Show post">{{ $post->category->name }}</a>
                     </p>
                     <p class="post-tags">
                         Tags:

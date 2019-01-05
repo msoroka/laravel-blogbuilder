@@ -24,7 +24,7 @@
                                     {!! str_limit($post->content, 200) !!}
                                 </p>
                                 <p class="post-author">
-                                    {{ $post->author->full_name }}
+                                    <a href="{{ route('single-author', $post->author->id) }}"  title="Show post">{{ $post->author->full_name }}</a>
                                 </p>
                             </div>
                         </div>
