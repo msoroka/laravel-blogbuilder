@@ -13,6 +13,11 @@ class SettingHandler
         return Setting::all()->first();
     }
 
+    public function getTheme()
+    {
+        return Setting::all()->first()->theme;
+    }
+
     public function updateBlogSettings(Request $request)
     {
         $setting = $this->getSettings();
@@ -23,6 +28,7 @@ class SettingHandler
             'facebook'    => 'string|nullable',
             'instagram'   => 'string|nullable',
             'owner_id'    => 'integer|nullable',
+            'theme'       => 'required|string',
         ]);
 
         $data = $request->only([
@@ -31,6 +37,7 @@ class SettingHandler
             'facebook',
             'instagram',
             'owner_id',
+            'theme',
         ]);
 
         if ($validator->fails()) {

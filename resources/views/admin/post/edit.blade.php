@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            {{ Form::model($post, ['route' => ['admin.post.update-post', $post], 'method' => 'PUT']) }}
+            {{ Form::model($post, ['route' => ['admin.post.update-post', $post], 'method' => 'PUT', 'files' => true]) }}
                 <div class="card shadow">
                     <div class="card-header">Edit post</div>
                     <div class="card-body">
@@ -51,6 +51,21 @@
                                 <div class="form-group">
                                     Updated at:<br>
                                     <strong>{{ $post->updated_at }}</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="margin-left: 15px;" class="col">
+                                    <hr>
+                                    {{ Form::label('image', 'Featured image:', ['class' => 'control-label']) }} <br>
+                                    @if($post->image)
+                                        <img src="/images/{{ $post->image }}" width="50%">
+                                    @else
+                                        <p>No featured image</p>
+                                    @endif
+                                    <div style="margin-top: 10px;" class="form-group required">
+                                        {{ Form::file('image', null) }}
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>

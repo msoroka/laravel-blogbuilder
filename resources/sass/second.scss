@@ -31,8 +31,7 @@ img {
     color: #888 !important;
 }
 .post-tags {
-    margin-top: -5px;
-    margin-bottom: -15px;
+    margin-top: -20px;
     color: #888 !important;
     text-transform: uppercase;
     font-size: 12px;
@@ -48,21 +47,31 @@ img {
 }
 .nav a {
     color: #fff !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    text-transform: uppercase;
 }
 .navbar {
     background: black !important;
-    border-bottom: 4px solid red !important;
-    padding: 0 !important;
 }
-.nav-link.active{
-    background: red !important;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.blog-title{
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
 }
-.jumbotron {
-    text-align: center !important;
+.date {
     text-transform: uppercase;
-    background: #fff !important;
+    font-size:15px;
+    font-style: italic; 
+}
+.card-post > .post-image {
+    height: 200px !important;
+    object-fit: cover !important;
+}
+.post-author {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    margin-top: -120px;
+}
+.card-post {
+    background: #eee !important;
 }

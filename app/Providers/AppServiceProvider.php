@@ -7,6 +7,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
             View::share('facebook', Setting::all()->first()->facebook ?? null);
             View::share('instagram', Setting::all()->first()->instagram ?? null);
             View::share('owner', Setting::all()->first()->owner ?? null);
+            View::share('theme', Setting::all()->first()->theme ?? null);
+
+            $css = 'css/' . Setting::all()->first()->theme . '.css';
+
+            View::share('css', $css ?? null);
+            View::share('date', Carbon::now()->format('d F Y') ?? null);
         }
     }
 

@@ -51,6 +51,22 @@
                                 </div>
                             </div>
                         </div>
+                        <h3>Theme:</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <img src="/images/first.png" width="50%">
+                                    {{ Form::radio('theme', 'first' , $setting->theme) }} First <br>
+                                    <hr>
+                                    <img src="/images/second.png" width="50%">
+                                    {{ Form::radio('theme', 'second' , $setting->theme) }} Second <br>
+                                    <hr>
+                                    <img src="/images/third.png" width="50%">
+                                    {{ Form::radio('theme', 'third' , $setting->theme) }} Third <br>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 {{ Form::submit('Save', ['class' => 'btn btn-primary btn-block']) }}

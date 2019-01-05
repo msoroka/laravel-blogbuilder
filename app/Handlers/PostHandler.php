@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image as Image;
 
 class PostHandler
 {
@@ -40,6 +41,13 @@ class PostHandler
             'content',
             'status',
         ]);
+
+        if ($request->only(['image'])) {
+            $image    = $request->only(['image']);
+            $fileName = $image['image']->getClientOriginalName();
+            Image::make($image['image']->getRealPath())->save('images/' . $fileName);
+            $data['image'] = $fileName;
+        }
 
         if ($request->only(['status']) == null) {
             $data['status'] = '1';
@@ -98,6 +106,13 @@ class PostHandler
             'content',
             'status',
         ]);
+
+        if ($request->only(['image'])) {
+            $image    = $request->only(['image']);
+            $fileName = $image['image']->getClientOriginalName();
+            Image::make($image['image']->getRealPath())->save('images/' . $fileName);
+            $data['image'] = $fileName;
+        }
 
         if ($validator->fails()) {
             flash('Sorry, something went wrong. Please try again.')->error();

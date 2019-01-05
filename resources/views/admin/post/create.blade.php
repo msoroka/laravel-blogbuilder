@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            {{ Form::open(['route' => ['admin.post.store-post']]) }}
+            {{ Form::open(['route' => ['admin.post.store-post'], 'files' => true]) }}
                 <div class="card shadow">
                     <div class="card-header">Create post</div>
                     <div class="card-body">
@@ -43,6 +43,16 @@
                                 <div class="form-group">
                                     {{ Form::label('tags[]', 'Tags:', ['class' => 'control-label']) }}
                                     {{ Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => false]) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="margin-left: 15px;" class="col">
+                                    <hr>
+                                    <div class="form-group required">
+                                        {{ Form::label('image', 'Featured image:', ['class' => 'control-label']) }}
+                                        {{ Form::file('image', null) }}
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>
