@@ -38,6 +38,7 @@ class SettingHandler
             'instagram',
             'owner_id',
             'theme',
+            'about',
         ]);
 
         if ($validator->fails()) {

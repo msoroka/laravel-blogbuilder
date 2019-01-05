@@ -78,6 +78,7 @@ Route::name('single-category')->get('/category/{id}', 'HomeController@getPostWit
 Route::name('single-tag')->get('/tag/{id}', 'HomeController@getPostWithTag');
 Route::name('single-author')->get('/author/{id}', 'HomeController@getPostWithAuthor');
 Route::name('contact')->get('/contact', 'HomeController@getContactForm');
+Route::name('about')->get('/about', 'HomeController@getAboutPage');
 Route::name('store-contact')->post('store', 'HomeController@storeContactForm');
 
 Route::name('change-password')->get('change-password', 'HomeController@getChangePassword');

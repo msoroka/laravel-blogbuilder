@@ -67,6 +67,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ Form::label('about', 'About page:', ['class' => 'control-label']) }}
+                                    {{ Form::textarea('about', null, ['class' => 'form-control my-editor']) }}
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 {{ Form::submit('Save', ['class' => 'btn btn-primary btn-block']) }}

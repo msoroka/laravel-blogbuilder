@@ -102,4 +102,12 @@ class HomeController extends Controller
     {
         return view('auth.change-password');
     }
+
+    public function getAboutPage()
+    {
+        return view($this->theme . '.about', [
+            'latestPosts' => $this->handler->getAllPosts()->where('status', '2')->take(5),
+            'categories'  => $this->categoryHandler->getAllCategories(),
+        ]);
+    }
 }
