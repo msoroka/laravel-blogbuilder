@@ -1,6 +1,8 @@
 # BlogBuilder
 
-BlogBuilder to aplikacja blogowa oparta na Laravel 5.7. Wszystkie funkcjonalności zostały opisane w [dokumentacji](https://github.com/msoroka/laravel-blogbuilder/blob/master/documentation/User%20Stories.pdf). Dostępne są również [diagramy UML](https://github.com/msoroka/laravel-blogbuilder/tree/master/documentation/diagrams).
+BlogBuilder to aplikacja blogowa oparta na Laravel 5.7. 
+Wszystkie funkcjonalności zostały opisane w [dokumentacji](https://github.com/msoroka/laravel-blogbuilder/blob/master/documentation/User%20Stories.pdf). 
+Dostępne są również [diagramy UML](https://github.com/msoroka/laravel-blogbuilder/tree/master/documentation/diagrams).
 Aplikacja jest dostępna pod adresem [https://blogbuilder.edu.pl](https://blogbuilder.edu.pl)
 
 ### Uruchomienie
