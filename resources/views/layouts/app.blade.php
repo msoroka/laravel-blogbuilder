@@ -10,12 +10,6 @@
 
     <title>{{ $title }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/navbar.js') }}" defer></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="{{ $font }}" rel="stylesheet" type="text/css">
@@ -49,7 +43,13 @@
         </main>
     </div>
 
-    <script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/navbar.js') }}" defer></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+    <script async>
   var editor_config = {
     path_absolute : "/",
     selector: "textarea.my-editor",
